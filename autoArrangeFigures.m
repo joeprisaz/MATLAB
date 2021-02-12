@@ -95,7 +95,7 @@ for i=1:1:nh
             scn_h_begin+scn_h-fig_height*i ...
             fig_width ...
             fig_height];
-        set(figHandle(fig_cnt),'OuterPosition',fig_pos);
+        set(figHandle(fig_cnt),'Units','pixels','OuterPosition',fig_pos);
         fig_cnt = fig_cnt + 1;
     end
 end
@@ -103,6 +103,6 @@ end
 end
 
 function figSorted = sortFigureHandles(figs)
-    [tmp, idx] = sort([figs.Number]);
+    [~, idx] = sort([figs.Number]);
     figSorted = figs(idx);
 end
