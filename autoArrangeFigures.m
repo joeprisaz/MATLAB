@@ -30,8 +30,6 @@ if nargin < 2
     monitor_id = 1;
 end
 
-task_bar_offset = [30 50];
-
 %%
 N_FIG = NH * NW;
 if N_FIG == 0
@@ -48,10 +46,19 @@ end
 
 screen_sz = get(0,'MonitorPositions');
 screen_sz = screen_sz(monitor_id, :);
+
+if ispc
+    task_bar_offset = [30 50];
+    scn_w_begin = screen_sz(1) + task_bar_offset(1);
+    scn_h_begin = screen_sz(2) + task_bar_offset(2);
+elseif ismac
+    task_bar_offset = [64 25];
+    scn_w_begin = screen_sz(1);
+    scn_h_begin = screen_sz(2);
+end
+
 scn_w = screen_sz(3) - task_bar_offset(1);
 scn_h = screen_sz(4) - task_bar_offset(2);
-scn_w_begin = screen_sz(1) + task_bar_offset(1);
-scn_h_begin = screen_sz(2) + task_bar_offset(2);
 
 if autoArrange==0
     if n_fig > N_FIG
