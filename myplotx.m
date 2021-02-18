@@ -1,7 +1,7 @@
 function myplotx(scale)
 
 if nargin < 1
-    error("enter a scale factor")
+    error("enter a scale factor, e.g. myplotx(2)")
 end
 
 % reset factory defaults
