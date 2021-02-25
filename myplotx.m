@@ -34,7 +34,18 @@ set(groot, 'defaultFigurePosition', [0.5, 0.5, w, h])
 
 fprintf('\n')
 try
-    cprintf('-comment',  'Commonly used commands\n')
+    cprintf('_red', 'Scaling\n')
+catch
+    fprintf('Scaling\n')
+end
+fprintf(['\nLine linewidth = ',num2str(1.5*scale),'\n'])
+fprintf(['Axes linewidth = ',num2str(0.75*scale),'\n'])
+fprintf(['Text font size = ',num2str(10*scale),'\n'])
+fprintf(['Axes font size = ',num2str(12*scale),'\n'])
+
+fprintf('\n')
+try
+    cprintf('-comment', 'Commonly used commands\n')
     cprintf('*black', ' \nOverride figure size\n')
 catch
     fprintf('Commonly used commands\n')
