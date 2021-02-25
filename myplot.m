@@ -4,6 +4,7 @@ set(groot, 'defaultFunctionlineLineWidth', get(groot, 'FactoryFunctionlineLineWi
 set(groot, 'defaultAxesLineWidth', get(groot, 'FactoryAxesLineWidth'))
 set(groot, 'defaultTextFontName', get(groot, 'FactoryTextFontName'))
 set(groot, 'defaultAxesFontName', get(groot, 'FactoryAxesFontName'))
+set(groot, 'defaultTextFontSize', get(groot, 'FactoryTextFontSize'))
 set(groot, 'defaultAxesFontSize', get(groot, 'FactoryAxesFontSize'))
 set(groot, 'defaultFigureUnits', get(groot, 'FactoryFigureUnits'))
 set(groot, 'defaultFigurePosition', get(groot, 'FactoryFigurePosition'))
@@ -17,6 +18,7 @@ set(groot, 'defaultAxesLineWidth', 1.0)
 % fonts
 set(groot, 'defaultTextFontName', 'CMU Serif')
 set(groot, 'defaultAxesFontName', 'CMU Serif')
+set(groot, 'defaultTextFontSize', 10)
 set(groot, 'defaultAxesFontSize', 12)
 
 % sizes
