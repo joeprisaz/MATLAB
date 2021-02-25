@@ -13,7 +13,7 @@ set(groot, 'defaultFigurePosition', get(groot, 'FactoryFigurePosition'))
 set(groot, 'defaultLineLineWidth', 1.5)
 set(groot, 'defaultFunctionlineLineWidth', 1.5)
 set(groot, 'defaultImplicitFunctionlineLineWidth', 1.5)
-set(groot, 'defaultAxesLineWidth', 1.0)
+set(groot, 'defaultAxesLineWidth', 0.75)
 
 % fonts
 set(groot, 'defaultTextFontName', 'CMU Serif')
