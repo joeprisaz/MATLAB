@@ -1,7 +1,7 @@
 function myplot(scale)
 
 if nargin < 1
-    error("enter a scale factor, e.g. myplot(2)")
+    scale = 1;
 end
 
 % reset factory defaults
