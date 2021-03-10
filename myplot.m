@@ -4,16 +4,20 @@ if nargin < 1
     scale = 1;
 end
 
-% reset factory defaults
-set(groot, 'defaultLineLineWidth', get(groot, 'FactoryLineLineWidth'))
-set(groot, 'defaultFunctionlineLineWidth', get(groot, 'FactoryFunctionlineLineWidth'))
-set(groot, 'defaultAxesLineWidth', get(groot, 'FactoryAxesLineWidth'))
-set(groot, 'defaultTextFontName', get(groot, 'FactoryTextFontName'))
-set(groot, 'defaultAxesFontName', get(groot, 'FactoryAxesFontName'))
-set(groot, 'defaultTextFontSize', get(groot, 'FactoryTextFontSize'))
-set(groot, 'defaultAxesFontSize', get(groot, 'FactoryAxesFontSize'))
-set(groot, 'defaultFigureUnits', get(groot, 'FactoryFigureUnits'))
-set(groot, 'defaultFigurePosition', get(groot, 'FactoryFigurePosition'))
+if scale == 0
+    % reset factory defaults
+    set(groot, 'defaultLineLineWidth', get(groot, 'FactoryLineLineWidth'))
+    set(groot, 'defaultFunctionlineLineWidth', get(groot, 'FactoryFunctionlineLineWidth'))
+    set(groot, 'defaultImplicitFunctionlineLineWidth', get(groot, 'FactoryImplicitFunctionlineLineWidth'))
+    set(groot, 'defaultAxesLineWidth', get(groot, 'FactoryAxesLineWidth'))
+    set(groot, 'defaultTextFontName', get(groot, 'FactoryTextFontName'))
+    set(groot, 'defaultAxesFontName', get(groot, 'FactoryAxesFontName'))
+    set(groot, 'defaultTextFontSize', get(groot, 'FactoryTextFontSize'))
+    set(groot, 'defaultAxesFontSize', get(groot, 'FactoryAxesFontSize'))
+    set(groot, 'defaultFigureUnits', get(groot, 'FactoryFigureUnits'))
+    set(groot, 'defaultFigurePosition', get(groot, 'FactoryFigurePosition'))
+    return
+end
 
 % lines
 set(groot, 'defaultLineLineWidth', 1.5 * scale)
