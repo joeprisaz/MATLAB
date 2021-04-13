@@ -1,7 +1,11 @@
-function myplot(scale)
+function myplot(scale,~)
 
 if nargin < 1
     scale = 1;
+elseif nargin == 1
+    setInterpreter = true;
+else
+    setInterpreter = false;
 end
 
 if scale == 0
@@ -31,9 +35,15 @@ set(groot, 'defaultAxesLineWidth', 0.75 * scale)
 % fonts
 set(groot, 'defaultTextFontName', 'CMU Serif')
 set(groot, 'defaultAxesFontName', 'CMU Serif')
-set(groot, 'defaultTextInterpreter', 'latex')
-set(groot, 'defaultAxesTickLabelInterpreter', 'latex')
-set(groot, 'defaultLegendInterpreter', 'latex')
+if setInterpreter == true
+    set(groot, 'defaultTextInterpreter', 'latex')
+    set(groot, 'defaultAxesTickLabelInterpreter', 'latex')
+    set(groot, 'defaultLegendInterpreter', 'latex')
+else
+    set(groot, 'defaultTextInterpreter', get(groot, 'factoryTextInterpreter'))
+    set(groot, 'defaultAxesTickLabelInterpreter', get(groot, 'factoryAxesTickLabelInterpreter'))
+    set(groot, 'defaultLegendInterpreter', get(groot, 'factoryLegendInterpreter'))
+end
 set(groot, 'defaultTextFontSize', 10 * scale)
 set(groot, 'defaultAxesFontSize', 12 * scale)
 
