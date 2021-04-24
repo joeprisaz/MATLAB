@@ -1,11 +1,20 @@
-function myplot(scale,~)
+function myplot(scale,~,~)
+% my default plotting settings
+% no arguments: scale factor 1
+% one argument: scale factor (interpreter set to latex)
+% two arguments: scale factor + set interpreter to default (tex)
+    % useful for plots w/ tex syntax, but want CMU Serif font
+% three arguments: sans font
 
+setInterpreter = true;
+sans = false;
 if nargin < 1
     scale = 1;
-elseif nargin == 1
-    setInterpreter = true;
-else
+elseif nargin > 1
     setInterpreter = false;
+    if nargin > 2
+        sans = true;
+    end
 end
 
 if scale == 0
@@ -33,8 +42,17 @@ set(groot, 'defaultImplicitFunctionlineLineWidth', 1.5 * scale)
 set(groot, 'defaultAxesLineWidth', 0.75 * scale)
 
 % fonts
-set(groot, 'defaultTextFontName', 'CMU Serif')
-set(groot, 'defaultAxesFontName', 'CMU Serif')
+if sans == true
+    set(groot, 'defaultTextFontName', 'DejaVu Sans')
+    set(groot, 'defaultAxesFontName', 'DejaVu Sans')
+else
+    set(groot, 'defaultTextFontName', 'CMU Serif')
+    set(groot, 'defaultAxesFontName', 'CMU Serif')
+end
+set(groot, 'defaultTextFontSize', 10 * scale)
+set(groot, 'defaultAxesFontSize', 12 * scale)
+
+% interpreter
 if setInterpreter == true
     set(groot, 'defaultTextInterpreter', 'latex')
     set(groot, 'defaultAxesTickLabelInterpreter', 'latex')
@@ -44,8 +62,6 @@ else
     set(groot, 'defaultAxesTickLabelInterpreter', get(groot, 'factoryAxesTickLabelInterpreter'))
     set(groot, 'defaultLegendInterpreter', get(groot, 'factoryLegendInterpreter'))
 end
-set(groot, 'defaultTextFontSize', 10 * scale)
-set(groot, 'defaultAxesFontSize', 12 * scale)
 
 % sizes
 set(groot, 'defaultFigureUnits', 'inches')
@@ -54,7 +70,8 @@ set(groot, 'defaultFigurePosition', [0.5, 0.5, w, h])
 % default figure position in inches
 % set(groot, 'defaultFigurePosition', [2.7639, 2.7639, 8.3333, 6.9444])
 
-fprintf('\n')
+% command window outputs
+fprintf('\n') % need separate line to not have color
 try
     cprintf('_[0 0 0.8]', 'Scaling\n')
 catch
@@ -62,10 +79,15 @@ catch
 end
 fprintf(['\nLine linewidth = ',num2str(1.5*scale),'\n'])
 fprintf(['Axes linewidth = ',num2str(0.75*scale),'\n'])
-fprintf(['Text font size = ',num2str(10*scale),'\n'])
-fprintf(['Axes font size = ',num2str(12*scale),'\n'])
+if setInterpreter == true
+    fprintf(['Text font size = ',num2str(10*scale),' (latex)\n'])
+    fprintf(['Axes font size = ',num2str(12*scale),' (latex)\n',])
+else
+    fprintf(['Text font size = ',num2str(10*scale),' (tex)\n'])
+    fprintf(['Axes font size = ',num2str(12*scale),' (tex)\n',])   
+end
 
-fprintf('\n')
+fprintf('\n') % need separate line to not have color
 try
     cprintf('_[0 0.4 0]', 'Commonly used commands\n')
     cprintf('*black', ' \nOverride figure size\n')
