@@ -1,10 +1,4 @@
 function myplot(scale,~,~)
-% my default plotting settings
-% no arguments: scale factor 1
-% one argument: scale factor (interpreter set to latex)
-% two arguments: scale factor + set interpreter to default (tex)
-    % useful for plots w/ tex syntax, but want CMU Serif font
-% three arguments: sans font
 
 setInterpreter = true;
 sans = false;
@@ -71,51 +65,56 @@ set(groot, 'defaultFigurePosition', [0.5, 0.5, w, h])
 % set(groot, 'defaultFigurePosition', [2.7639, 2.7639, 8.3333, 6.9444])
 
 % command window outputs
-fprintf('\n') % need separate line to not have color
+try
+    cprintf('_[0.8 0 0]', 'Number of Arguments\n')
+    cprintf('*black', '0'); fprintf(' - scale factor 1\n')
+    cprintf('*black', '1'); fprintf(' - scale factor (interpreter set to latex)\n')
+    cprintf('*black', '2'); fprintf(' - scale factor + set interpreter to default (tex)\n')
+    cprintf('*black', '3'); fprintf(' - sans font\n')
+catch
+    fprintf('Arguments\n')
+    fprintf('0'); fprintf(' - scale factor set to 1\n')
+    fprintf('1'); fprintf(' - scale factor (interpreter set to latex)\n')
+    fprintf('2'); fprintf(' - scale factor + set interpreter to default (tex)\n')
+    fprintf('3'); fprintf(' - sans font\n')
+end
+fprintf('myplot(0) for factory defaults\n\n')
+
 try
     cprintf('_[0 0 0.8]', 'Scaling\n')
 catch
     fprintf('Scaling\n')
 end
-fprintf(['\nLine linewidth = ',num2str(1.5*scale),'\n'])
-fprintf(['Axes linewidth = ',num2str(0.75*scale),'\n'])
+fprintf('Line linewidth = %.2f\n',1.5*scale)
+fprintf('Axes linewidth = %.2f\n',0.75*scale)
 if setInterpreter == true
-    fprintf(['Text font size = ',num2str(10*scale),' (latex)\n'])
-    fprintf(['Axes font size = ',num2str(12*scale),' (latex)\n',])
+    fprintf('Text font size = %d (latex)\n',10*scale)
+    fprintf('Axes font size = %d (latex)\n\n',12*scale)
 else
-    fprintf(['Text font size = ',num2str(10*scale),' (tex)\n'])
-    fprintf(['Axes font size = ',num2str(12*scale),' (tex)\n',])   
+    fprintf('Text font size = %d (tex)\n',10*scale)
+    fprintf('Axes font size = %d (tex)\n\n',12*scale)
 end
 
-fprintf('\n') % need separate line to not have color
 try
     cprintf('_[0 0.4 0]', 'Commonly used commands\n')
-    cprintf('*black', ' \nOverride figure size\n')
+    cprintf('*black', 'Override figure size\n')
+    fprintf('set(gcf, ''Position'', [0.5, 0.5, %.1f, %.1f])\n\n',w,h)
+    cprintf('*black', 'Reduce white space\n')
+    fprintf("set(gca, 'LooseInset', get(gca,'TightInset') + 0.01)\n\n")
+    cprintf('*black', 'Export pdf\n')
+    fprintf("exportgraphics(gcf,'filename.pdf','ContentType','vector')\n\n")
+    cprintf('*black', 'Export png\n')
+    fprintf("exportgraphics(gcf,'filename.png','Resolution','600')\n\n")
 catch
     fprintf('Commonly used commands\n')
-    fprintf(' \nOverride figure size\n')
-end
-fprintf(['set(gcf, ''Position'', [0.5, 0.5, ',num2str(w),', ',num2str(h),'])\n\n'])
-
-try
-    cprintf('*black', 'Reduce white space\n')
-catch
+    fprintf('Override figure size\n')
+    fprintf('set(gcf, ''Position'', [0.5, 0.5, %.1f, %.1f])\n\n',w,h)
     fprintf('Reduce white space\n')
-end
-fprintf("set(gca, 'LooseInset', get(gca,'TightInset') + 0.01)\n\n")
-
-try
-    cprintf('*black', 'Export pdf\n')
-catch
+    fprintf("set(gca, 'LooseInset', get(gca,'TightInset') + 0.01)\n\n")
     fprintf('Export pdf\n')
-end
-fprintf("exportgraphics(gcf,'filename.pdf','ContentType','vector')\n\n")
-
-try
-    cprintf('*black', 'Export png\n')
-catch
+    fprintf("exportgraphics(gcf,'filename.pdf','ContentType','vector')\n\n")
     fprintf('Export png\n')
+    fprintf("exportgraphics(gcf,'filename.png','Resolution','600')\n\n")
 end
-fprintf("exportgraphics(gcf,'filename.png','Resolution','600')\n\n")
 
 end
