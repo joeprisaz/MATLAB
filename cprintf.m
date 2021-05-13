@@ -1,4 +1,4 @@
-function count = cprintf(style,format,varargin)
+function count = cprintf(style,format,varargin) %#ok<*JAPIMATHWORKS>
 % CPRINTF displays styled formatted text in the Command Window
 %
 % Syntax:
@@ -37,8 +37,14 @@ function count = cprintf(style,format,varargin)
 %          only one of them can be used in a single cprintf command. But of
 %          course bold and underline can be mixed by using separate commands.
 %
-%    STYLE also accepts a regular Matlab RGB vector, that can be underlined
-%    and bolded: -[0,1,1] means underlined cyan, '*[1,0,0]' is bold red.
+%    STYLE colors can be specified in 3 variants:
+%        [0.1, 0.7, 0.3] - standard Matlab RGB color format in the range 0.0-1.0
+%        [26, 178, 76]   - numeric RGB values in the range 0-255
+%        '#1ab34d'       - Hexadecimal format in the range '00'-'FF' (case insensitive)
+%                          3-digit HTML RGB format also accepted: 'a5f'='aa55ff'
+%
+%    STYLE can be underlined by prefixing - :  -[0,1,1]  or '-#0FF' is underlined cyan
+%    STYLE can be made bold  by prefixing * : '*[1,0,0]' or '*#F00' is bold red
 %
 %    STYLE is case-insensitive and accepts unique partial strings just
 %    like handle property names.
@@ -95,6 +101,7 @@ function count = cprintf(style,format,varargin)
 %    6. Bold style is only supported on R2011b+, and cannot also be underlined.
 %
 % Change log:
+%    2021-04-07: Enabled specifying color as #RGB (hexa codes), [.1,.7,.3], [26,178,76]
 %    2020-01-20: Fix by T. Hosman for embedded hyperlinks
 %    2015-06-24: Fixed a few discoloration issues (some other issues still remain)
 %    2015-03-20: Fix: if command window isn't defined yet (startup) use standard fprintf as suggested by John Marozas
@@ -115,7 +122,7 @@ function count = cprintf(style,format,varargin)
 % referenced and attributed as such. The original author maintains the right to be solely associated with this work.
 
 % Programmed and Copyright by Yair M. Altman: altmany(at)gmail.com
-% $Revision: 1.11 $  $Date: 2020/01/05 20:17:23 $
+% $Revision: 1.12 $  $Date: 2021/04/07 01:02:53 $
 
   persistent majorVersion minorVersion
   if isempty(majorVersion)
@@ -326,8 +333,8 @@ function [underlineFlag,boldFlag,style,debugFlag] = processStyleInfo(style)
       end
   end
 
-  % Style = valid matlab RGB vector
-  if isnumeric(style) && length(style)==3 && all(style<=1) && all(abs(style)>=0)
+  % Style = valid matlab RGB vector: [0.1,0.2,0.3] or [25,50,75]
+  if isnumeric(style) && length(style)==3 && all(style<=255) && all(abs(style)>=0)
       if any(style<0)
           underlineFlag = 1;
           style = abs(style);
@@ -336,6 +343,15 @@ function [underlineFlag,boldFlag,style,debugFlag] = processStyleInfo(style)
 
   elseif ~ischar(style)
       error('YMA:cprintf:InvalidStyle','Invalid style - see help section for a list of valid style values')
+
+  % #RGB in hex mode (suggested by Andres Tönnesmann 26/3/21 https://mail.google.com/mail/u/0/#inbox/FMfcgxwLtGlbzftbfKJwWLNZKpSqzHhR)
+  elseif style(1) == '#'
+      hexCode = style(2:min(end,7));
+      if length(hexCode)==3, hexCode = reshape([hexCode;hexCode],1,[]); end  % #a5f -> #aa55ff
+      hexCode = sprintf('%06s',hexCode);  % pad with leading 00s
+      hexCode = reshape(hexCode,2,3)';  % '1a2b3c' -> ['1a'; '2b'; '3c']
+      rgb = hex2dec(hexCode);  % convert to [r,g,b] tripplet (0-255 values)
+      style = getColorStyle(rgb);
 
   % Style name
   else
@@ -377,7 +393,8 @@ function [underlineFlag,boldFlag,style,debugFlag] = processStyleInfo(style)
 
 % Convert a Matlab RGB vector into a known style name (e.g., '[255,37,0]')
 function styleName = getColorStyle(rgb)
-  intColor = int32(rgb*255);
+  if all(rgb<=1), rgb = rgb*255; end  % 0.5 -> 127
+  intColor = int32(rgb);
   javaColor = java.awt.Color(intColor(1), intColor(2), intColor(3));
   styleName = sprintf('[%d,%d,%d]',intColor);
   com.mathworks.services.Prefs.setColorPref(styleName,javaColor);
