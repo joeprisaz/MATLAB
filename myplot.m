@@ -114,7 +114,7 @@ catch
     fprintf('Export pdf\n')
     fprintf("exportgraphics(gcf,'filename.pdf','ContentType','vector')\n\n")
     fprintf('Export png\n')
-    fprintf("exportgraphics(gcf,'filename.png','Resolution','600')\n\n")
+    fprintf("exportgraphics(gcf,'filename.png','Resolution','300')\n\n")
 end
 
 end
