@@ -104,7 +104,7 @@ try
     cprintf('*black', 'Export pdf\n')
     fprintf("exportgraphics(gcf,'filename.pdf','ContentType','vector')\n\n")
     cprintf('*black', 'Export png\n')
-    fprintf("exportgraphics(gcf,'filename.png','Resolution','600')\n\n")
+    fprintf("exportgraphics(gcf,'filename.png','Resolution','300')\n\n")
 catch
     fprintf('Commonly used commands\n')
     fprintf('Override figure size\n')
