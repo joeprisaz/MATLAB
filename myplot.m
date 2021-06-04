@@ -73,11 +73,11 @@ set(groot, 'defaultFigurePosition', [0.5, 0.5, w, h])
 
 % command window outputs
 try
-    cprintf('_[0.8 0 0]', 'Number of Arguments\n')
-    cprintf('*black', '0'); fprintf(' - scale factor 1\n')
-    cprintf('*black', '1'); fprintf(' - scale factor (interpreter set to latex)\n')
-    cprintf('*black', '2'); fprintf(' - scale factor + set interpreter to default (tex)\n')
-    cprintf('*black', '3'); fprintf(' - sans font\n')
+    cprintf('_[1 0.2 0.2]', 'Number of Arguments\n')
+    cprintf('*text', '0 '); fprintf('- scale factor 1\n')
+    cprintf('*text', '1 '); fprintf('- scale factor (interpreter set to latex)\n')
+    cprintf('*text', '2 '); fprintf('- scale factor + set interpreter to default (tex)\n')
+    cprintf('*text', '3 '); fprintf('- sans font'); cprintf('*text', '\n');
 catch
     fprintf('Arguments\n')
     fprintf('0'); fprintf(' - scale factor set to 1\n')
@@ -88,7 +88,7 @@ end
 fprintf('myplot(0) for factory defaults\n\n')
 
 try
-    cprintf('_[0 0 0.8]', 'Scaling\n')
+    cprintf('_[0.2 0.2 1]', 'Scaling\n')
 catch
     fprintf('Scaling\n')
 end
@@ -103,14 +103,14 @@ else
 end
 
 try
-    cprintf('_[0 0.4 0]', 'Commonly used commands\n')
-    cprintf('*black', 'Override figure size\n')
+    cprintf('_[0.2 1 0.2]', 'Commonly used commands\n')
+    cprintf('*text', 'Override figure size\n')
     fprintf('set(gcf, ''Position'', [0.5, 0.5, %.1f, %.1f])\n\n',w,h)
-    cprintf('*black', 'Reduce white space\n')
+    cprintf('*text', 'Reduce white space\n')
     fprintf("set(gca, 'LooseInset', get(gca,'TightInset') + 0.01)\n\n")
-    cprintf('*black', 'Export pdf\n')
+    cprintf('*text', 'Export pdf\n')
     fprintf("exportgraphics(gcf,'filename.pdf','ContentType','vector')\n\n")
-    cprintf('*black', 'Export png\n')
+    cprintf('*text', 'Export png\n')
     fprintf("exportgraphics(gcf,'filename.png','Resolution','300')\n\n")
 catch
     fprintf('Commonly used commands\n')
