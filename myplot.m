@@ -56,6 +56,7 @@ set(groot, 'defaultAxesFontSize', 12 * scale)
 if setInterpreter == true
     set(groot, 'defaultTextInterpreter', 'latex')
     set(groot, 'defaultAxesTickLabelInterpreter', 'latex')
+    set(groot, 'defaultColorbarTickLabelInterpreter', 'latex')
     set(groot, 'defaultLegendInterpreter', 'latex')
 else
     set(groot, 'defaultTextInterpreter', get(groot, 'factoryTextInterpreter'))
