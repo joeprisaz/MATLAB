@@ -73,26 +73,14 @@ set(groot, 'defaultFigurePosition', [0.5, 0.5, w, h])
 % set(groot, 'defaultFigurePosition', [2.7639, 2.7639, 8.3333, 6.9444])
 
 % command window outputs
-try
-    cprintf('_[1 0.2 0.2]', 'Number of Arguments\n')
-    cprintf('*text', '0 '); fprintf('- scale factor 1\n')
-    cprintf('*text', '1 '); fprintf('- scale factor (interpreter set to latex)\n')
-    cprintf('*text', '2 '); fprintf('- scale factor + set interpreter to default (tex)\n')
-    cprintf('*text', '3 '); fprintf('- sans font'); cprintf('*text', '\n');
-catch
-    fprintf('Arguments\n')
-    fprintf('0'); fprintf(' - scale factor set to 1\n')
-    fprintf('1'); fprintf(' - scale factor (interpreter set to latex)\n')
-    fprintf('2'); fprintf(' - scale factor + set interpreter to default (tex)\n')
-    fprintf('3'); fprintf(' - sans font\n')
-end
+fprintf('Arguments\n')
+fprintf('0'); fprintf(' - scale factor set to 1\n')
+fprintf('1'); fprintf(' - scale factor (interpreter set to latex)\n')
+fprintf('2'); fprintf(' - scale factor + set interpreter to default (tex)\n')
+fprintf('3'); fprintf(' - sans font\n')
 fprintf('myplot(0) for factory defaults\n\n')
 
-try
-    cprintf('_[0.2 0.2 1]', 'Scaling\n')
-catch
-    fprintf('Scaling\n')
-end
+fprintf('Scaling\n')
 fprintf('Line linewidth = %.2f\n',1.5*scale)
 fprintf('Axes linewidth = %.2f\n',0.75*scale)
 if setInterpreter == true
@@ -103,26 +91,14 @@ else
     fprintf('Axes font size = %d (tex)\n\n',12*scale)
 end
 
-try
-    cprintf('_[0.2 1 0.2]', 'Commonly used commands\n')
-    cprintf('*text', 'Override figure size\n')
-    fprintf('set(gcf, ''Position'', [0.5, 0.5, %.1f, %.1f])\n\n',w,h)
-    cprintf('*text', 'Reduce white space\n')
-    fprintf("set(gca, 'LooseInset', get(gca,'TightInset') + 0.01)\n\n")
-    cprintf('*text', 'Export pdf\n')
-    fprintf("exportgraphics(gcf,'filename.pdf','ContentType','vector')\n\n")
-    cprintf('*text', 'Export png\n')
-    fprintf("exportgraphics(gcf,'filename.png','Resolution','300')\n\n")
-catch
-    fprintf('Commonly used commands\n')
-    fprintf('Override figure size\n')
-    fprintf('set(gcf, ''Position'', [0.5, 0.5, %.1f, %.1f])\n\n',w,h)
-    fprintf('Reduce white space\n')
-    fprintf("set(gca, 'LooseInset', get(gca,'TightInset') + 0.01)\n\n")
-    fprintf('Export pdf\n')
-    fprintf("exportgraphics(gcf,'filename.pdf','ContentType','vector')\n\n")
-    fprintf('Export png\n')
-    fprintf("exportgraphics(gcf,'filename.png','Resolution','300')\n\n")
-end
+fprintf('Commonly used commands\n')
+fprintf('Override figure size\n')
+fprintf('set(gcf, ''Position'', [0.5, 0.5, %.1f, %.1f])\n\n',w,h)
+fprintf('Reduce white space\n')
+fprintf("set(gca, 'LooseInset', get(gca,'TightInset') + 0.01)\n\n")
+fprintf('Export pdf\n')
+fprintf("exportgraphics(gcf,'filename.pdf','ContentType','vector')\n\n")
+fprintf('Export png\n')
+fprintf("exportgraphics(gcf,'filename.png','Resolution','300')\n\n")
 
 end
