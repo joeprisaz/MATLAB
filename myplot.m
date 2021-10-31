@@ -94,6 +94,8 @@ end
 fprintf('Commonly used commands\n')
 fprintf('Override figure size\n')
 fprintf('set(gcf, ''Position'', [0.5, 0.5, %.1f, %.1f])\n\n',w,h)
+fprintf('Override opengl renderer\n')
+fprintf('set(gcf, ''Renderer'', ''Painters'')\n\n')
 fprintf('Reduce white space\n')
 fprintf("set(gca, 'LooseInset', get(gca,'TightInset') + 0.01)\n\n")
 fprintf('Export pdf\n')
