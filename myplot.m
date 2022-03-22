@@ -27,7 +27,6 @@ if scale == 0
     set(groot, 'defaultTextFontSize', get(groot, 'FactoryTextFontSize'))
     set(groot, 'defaultAxesFontSize', get(groot, 'FactoryAxesFontSize'))
     set(groot, 'defaultColorbarFontSize', get(groot, 'factoryColorbarFontSize'))
-    set(groot, 'defaultFigureUnits', get(groot, 'FactoryFigureUnits'))
     set(groot, 'defaultFigurePosition', get(groot, 'FactoryFigurePosition'))
     return
 end
@@ -66,11 +65,8 @@ else
 end
 
 % sizes
-set(groot, 'defaultFigureUnits', 'inches')
-w = 7.0 * scale; h = 4.5 * scale;
-set(groot, 'defaultFigurePosition', [0.5, 0.5, w, h])
-% default figure position in inches
-% set(groot, 'defaultFigurePosition', [2.7639, 2.7639, 8.3333, 6.9444])
+w = 600 * scale; h = 400 * scale;
+set(groot, 'defaultFigurePosition', [30, 30, w, h])
 
 % command window outputs
 fprintf('Arguments\n')
