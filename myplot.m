@@ -66,7 +66,11 @@ end
 
 % sizes
 w = 600 * scale; h = 400 * scale;
-set(groot, 'defaultFigurePosition', [30, 30, w, h])
+if ismac
+    set(groot, 'defaultFigurePosition', [20, 20, w, h])
+else
+    set(groot, 'defaultFigurePosition', [11, 51, w, h])
+end
 
 % command window outputs
 fprintf('Arguments\n')
