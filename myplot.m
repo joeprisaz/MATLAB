@@ -66,11 +66,8 @@ end
 
 % sizes
 w = 600 * scale; h = 400 * scale;
-if ismac
-    set(groot, 'defaultFigurePosition', [20, 20, w, h])
-else
-    set(groot, 'defaultFigurePosition', [11, 51, w, h])
-end
+if ismac; x = 20; y = 20; else; x = 11; y = 51; end
+set(groot, 'defaultFigurePosition', [x, y, w, h])
 
 % command window outputs
 fprintf('Arguments\n')
@@ -93,7 +90,7 @@ end
 
 fprintf('Commonly used commands\n')
 fprintf('Override figure size\n')
-fprintf('set(gcf, ''Position'', [30, 30, %.f, %.f])\n\n',w,h)
+fprintf('set(gcf, ''Position'', [%.f, %.f, %.f, %.f])\n\n',x,y,w,h)
 fprintf('Override opengl renderer\n')
 fprintf('set(gcf, ''Renderer'', ''Painters'')\n\n')
 fprintf('Export pdf\n')
