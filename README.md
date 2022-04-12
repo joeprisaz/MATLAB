@@ -1,5 +1,5 @@
 # MATLAB
-MATLAB startup script and other visualization scripts. This folder should be located in the user/Documents folder to  
+MATLAB startup script and other visualization scripts. This folder should be located in the user/Documents folder to be automatically added to the MATLAB path.
 
 ## `startup.m`
 Runs when MATLAB is opened. Currently unused.
