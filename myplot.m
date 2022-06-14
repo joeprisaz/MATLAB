@@ -15,15 +15,6 @@ function myplot(scale,varargin)
 
 useLatex = false; % default to tex
 
-% for simplicity, these values are fixed but can be overwritten in a script
-% by changing the figure, axis, or plot settings.
-lineLineWd  = 1.5  * scale;
-axesLineWd  = 0.75 * scale;
-textFontSz  = 10   * scale;
-axesFontSz  = 12   * scale;
-figureWd    = 600  * scale;
-figureHt    = 400  * scale;
-
 % parse input
 if nargin < 1
     scale = 1; % set scale factor to 1
@@ -52,6 +43,15 @@ if scale == 0
     set(groot, 'defaultFigurePosition', get(groot, 'FactoryFigurePosition'))
     return
 end
+
+% for simplicity, these values are fixed but can be overwritten in a script
+% by changing the figure, axis, or plot settings.
+lineLineWd  = 1.5  * scale;
+axesLineWd  = 0.75 * scale;
+textFontSz  = 10   * scale;
+axesFontSz  = 12   * scale;
+figureWd    = 600  * scale;
+figureHt    = 400  * scale;
 
 % line width
 set(groot, 'defaultLineLineWidth', lineLineWd)
@@ -92,7 +92,7 @@ fprintf('Line, Axes linewidth = %.2f, %.2f\n',lineLineWd, axesLineWd)
 fprintf('Axes, Text font size = %.2f, %.2f\n',axesFontSz, textFontSz)
 
 fprintf('\nOverride figure size\n')
-fprintf('set(gcf, ''Position'', [%.f, %.f, %.f, %.f])\n\n',x,y,w,h)
+fprintf('set(gcf, ''Position'', [%.f, %.f, %.f, %.f])\n\n',x,y,figureWd,figureHt)
 fprintf('Export pdf\n')
 fprintf("exportgraphics(gcf,'filename.pdf','ContentType','vector')\n\n")
 fprintf('Export png\n')
