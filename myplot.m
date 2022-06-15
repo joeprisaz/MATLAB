@@ -26,21 +26,21 @@ end
 
 % reset factory defaults
 if scale == 0
-    set(groot, 'defaultLineLineWidth', get(groot, 'FactoryLineLineWidth'))
-    set(groot, 'defaultFunctionlineLineWidth', get(groot, 'FactoryFunctionlineLineWidth'))
-    set(groot, 'defaultImplicitFunctionlineLineWidth', get(groot, 'FactoryImplicitFunctionlineLineWidth'))
-    set(groot, 'defaultAxesLineWidth', get(groot, 'FactoryAxesLineWidth'))
-    set(groot, 'defaultColorbarLineWidth', get(groot, 'FactoryColorbarLineWidth'))
-    set(groot, 'defaultTextFontName', get(groot, 'FactoryTextFontName'))
-    set(groot, 'defaultAxesFontName', get(groot, 'FactoryAxesFontName'))
-    set(groot, 'defaultTextInterpreter', get(groot, 'FactoryTextInterpreter'))
-    set(groot, 'defaultAxesTickLabelInterpreter', get(groot, 'FactoryAxesTickLabelInterpreter'))
-    set(groot, 'defaultColorbarTickLabelInterpreter', get(groot, 'FactoryColorbarTickLabelInterpreter'))
-    set(groot, 'defaultLegendInterpreter', get(groot, 'FactoryLegendInterpreter'))
-    set(groot, 'defaultTextFontSize', get(groot, 'FactoryTextFontSize'))
-    set(groot, 'defaultAxesFontSize', get(groot, 'FactoryAxesFontSize'))
-    set(groot, 'defaultColorbarFontSize', get(groot, 'FactoryColorbarFontSize'))
-    set(groot, 'defaultFigurePosition', get(groot, 'FactoryFigurePosition'))
+    set(groot, 'defaultLineLineWidth', get(groot, 'factoryLineLineWidth'))
+    set(groot, 'defaultFunctionlineLineWidth', get(groot, 'factoryFunctionlineLineWidth'))
+    set(groot, 'defaultImplicitFunctionlineLineWidth', get(groot, 'factoryImplicitFunctionlineLineWidth'))
+    set(groot, 'defaultAxesLineWidth', get(groot, 'factoryAxesLineWidth'))
+    set(groot, 'defaultColorbarLineWidth', get(groot, 'factoryColorbarLineWidth'))
+    set(groot, 'defaultTextFontName', get(groot, 'factoryTextFontName'))
+    set(groot, 'defaultAxesFontName', get(groot, 'factoryAxesFontName'))
+    set(groot, 'defaultTextInterpreter', get(groot, 'factoryTextInterpreter'))
+    set(groot, 'defaultAxesTickLabelInterpreter', get(groot, 'factoryAxesTickLabelInterpreter'))
+    set(groot, 'defaultColorbarTickLabelInterpreter', get(groot, 'factoryColorbarTickLabelInterpreter'))
+    set(groot, 'defaultLegendInterpreter', get(groot, 'factoryLegendInterpreter'))
+    set(groot, 'defaultTextFontSize', get(groot, 'factoryTextFontSize'))
+    set(groot, 'defaultAxesFontSize', get(groot, 'factoryAxesFontSize'))
+    set(groot, 'defaultColorbarFontSize', get(groot, 'factoryColorbarFontSize'))
+    set(groot, 'defaultFigurePosition', get(groot, 'factoryFigurePosition'))
     return
 end
 
