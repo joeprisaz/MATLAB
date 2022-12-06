@@ -11,17 +11,13 @@
 % matlab session will reset these changes. Also, calling myplot(0) will
 % reset to factory defaults.
 
-function myplot(scale,varargin)
+function myplot(scale,NVargs)
 
-useLatex = false; % default to tex
-
-% parse input
-if nargin < 1
-    scale = 1; % set scale factor to 1
-elseif nargin == 1
-    % do nothing
-elseif nargin > 1
-    useLatex = varargin{2}; % set the interpreter manually
+arguments
+    scale (1,1) double = 1
+    NVargs.figScae
+    NVargs.useLatex (1,1) logical = false % use tex by default
+    NVargs.quiet (1,1) logical = false % show output tips by default
 end
 
 % reset factory defaults
@@ -41,6 +37,7 @@ if scale == 0
     set(groot, 'defaultAxesFontSize', get(groot, 'factoryAxesFontSize'))
     set(groot, 'defaultColorbarFontSize', get(groot, 'factoryColorbarFontSize'))
     set(groot, 'defaultFigurePosition', get(groot, 'factoryFigurePosition'))
+    fprintf('Graphics defaults have been reset.\n')
     return
 end
 
@@ -74,7 +71,7 @@ end
 set(groot, 'defaultFigurePosition', [x, y, figureWd, figureHt])
 
 % set interpreter
-if useLatex == true
+if NVargs.useLatex == true
     set(groot, 'defaultTextInterpreter', 'latex')
     set(groot, 'defaultAxesTickLabelInterpreter', 'latex')
     set(groot, 'defaultColorbarTickLabelInterpreter', 'latex')
@@ -87,15 +84,17 @@ else
 end
 
 % command window outputs
-fprintf('\nScaling\n')
-fprintf('Line, Axes linewidth = %.2f, %.2f\n',lineLineWd, axesLineWd)
-fprintf('Axes, Text font size = %.2f, %.2f\n',axesFontSz, textFontSz)
-
-fprintf('\nOverride figure size\n')
-fprintf('set(gcf, ''Position'', [%.f, %.f, %.f, %.f])\n\n',x,y,figureWd,figureHt)
-fprintf('Export pdf\n')
-fprintf("exportgraphics(gcf,'filename.pdf','ContentType','vector')\n\n")
-fprintf('Export png\n')
-fprintf("exportgraphics(gcf,'filename.png','Resolution','300')\n\n")
+if NVargs.quiet == false
+    fprintf('\nScaling\n')
+    fprintf('Line, Axes linewidth = %.2f, %.2f\n',lineLineWd, axesLineWd)
+    fprintf('Axes, Text font size = %.2f, %.2f\n',axesFontSz, textFontSz)
+    
+    fprintf('\nOverride figure size\n')
+    fprintf('set(gcf, ''Position'', [%.f, %.f, %.f, %.f])\n\n',x,y,figureWd,figureHt)
+    fprintf('Export pdf\n')
+    fprintf("exportgraphics(gcf,'filename.pdf','ContentType','vector')\n\n")
+    fprintf('Export png\n')
+    fprintf("exportgraphics(gcf,'filename.png','Resolution','300')\n\n")
+end
 
 end

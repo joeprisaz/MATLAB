@@ -5,7 +5,8 @@
      "inputs":
      [
         {"name":"scale", "kind":"required", "type":["numeric"], "purpose":"Adjust figure and axis sizes"},
-        {"name":"useLaTeX", "kind":"namevalue", "type":["logical","scalar"],"purpose":"Change interpreter"}
+        {"name":"useLaTeX", "kind":"namevalue", "type":["logical","scalar"],"purpose":"Change interpreter"},
+        {"name":"quiet", "kind":"namevalue", "type":["logical","scalar"],"purpose":"Hide tips"}
      ]
   }
 }
