@@ -15,7 +15,7 @@ function myplot(scale,NVargs)
 
 arguments
     scale (1,1) double = 1
-    NVargs.figScae
+    NVargs.figScale (1,1) double = scale
     NVargs.useLatex (1,1) logical = false % use tex by default
     NVargs.quiet (1,1) logical = false % show output tips by default
 end
@@ -47,8 +47,13 @@ lineLineWd  = 1.5  * scale;
 axesLineWd  = 0.75 * scale;
 textFontSz  = 10   * scale;
 axesFontSz  = 12   * scale;
-figureWd    = 600  * scale;
-figureHt    = 400  * scale;
+if scale ~= NVargs.figScale
+    figureWd    = 600  * NVargs.figScale;
+    figureHt    = 400  * NVargs.figScale;
+else
+    figureWd    = 600  * scale;
+    figureHt    = 400  * scale;
+end
 
 % line width
 set(groot, 'defaultLineLineWidth', lineLineWd)
