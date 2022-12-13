@@ -1,10 +1,13 @@
-% myplot.m    Automatically set formatting options for figures/axes.
+% MYPLOT.m    Automatically set formatting options for figures/axes.
 %
-% Increases the default figure size and puts the origin at the lower left
-% corner. Adjusts the default line widths to match larger figure size. 
-% Position is slightly different on mac/windows to account for
-% taskbar size on windows (40 px). Text interpreter may be changed from
-% default tex to latex for common axis elements.
+% MYPLOT(scale) Changes the default figure size to (600 px by 400 px)*scale
+% and puts the origin at the lower left corner. Figure position is slightly
+% different on mac/windows to account for taskbar size on windows (40 px).
+% Default line widths and font sizes are scaled to match figure size.
+% Optional name-value arguments allow for the figure scaling to be
+% independent of line width and text scaling, as well as changing the
+% interpreter to tex. Tips in the command window can be suppressed by
+% setting quiet=true.
 %
 % The graphics root settings are changed such that all new figures during
 % the open matlab session will use the applied settings. Opening a new
